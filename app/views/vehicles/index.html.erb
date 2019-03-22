@@ -1,0 +1,27 @@
+<h1>All Vehicles</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Category</th>
+      <th>Daily Price</th>
+      <th>Commissioned On</th>
+      <th>Decommissioned On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= vehicle.make %></td>
+        <td><%= vehicle.model_name %></td>
+        <td><%= vehicle.year %></td>
+        <td><%= vehicle.category_name %></td>
+        <td><%= number_to_currency(vehicle.daily_price) %></td>
+        <td><%= vehicle.commissioned_on %></td>
+        <td><%= vehicle.decommissioned_on %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
