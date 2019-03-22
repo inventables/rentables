@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+fusion_1:
+  year: 2016
+  vehicle_model: ford_fusion
+  commissioned_on: 2016-01-01
+  decommissioned_on: 2017-12-31
+
+fusion_2:
+  year: 2017
+  vehicle_model: ford_fusion
+  commissioned_on: 2017-01-01
+
+fusion_3:
+  year: 2018
+  vehicle_model: ford_fusion
+  commissioned_on: 2018-01-01
+
+pilot_1:
+  year: 2018
+  vehicle_model: honda_pilot
+  commissioned_on: 2018-01-01

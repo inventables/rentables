@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ford_fusion:
+  make: Ford
+  name: Fusion
+  vehicle_category: sedan
+
+honda_pilot:
+  make: Honda
+  name: Pilot
+  vehicle_category: suv
