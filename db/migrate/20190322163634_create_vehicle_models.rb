@@ -8,6 +8,6 @@ class CreateVehicleModels < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :vehicle_models, [:make, :model], unique: true
+    add_index :vehicle_models, [:make, :name], unique: true
   end
 end

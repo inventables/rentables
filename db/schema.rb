@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_202133) do
     t.integer "vehicle_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["make", nil], name: "index_vehicle_models_on_make_and_model", unique: true
+    t.index ["make", "name"], name: "index_vehicle_models_on_make_and_name", unique: true
     t.index ["vehicle_category_id"], name: "index_vehicle_models_on_vehicle_category_id"
   end
 
