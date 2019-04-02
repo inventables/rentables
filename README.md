@@ -1,24 +1,14 @@
-# README
+# Inventables Car Rental Coding Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
+Ruby version `2.5.1`
+Bundler gem, preferred version `2.0.1`
 
-Things you may want to cover:
+## Setting up
+- Clone the git repo and navigate to code directory
+- Install the gems: `bundle install`
+- Run migrations: `rake db:migrate`
+- Seed the database: `rails db:fixtures:load`
+- Start the server: `rails server`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Navigate to [localhost:3000](http://localhost:3000) to see the app in action.
