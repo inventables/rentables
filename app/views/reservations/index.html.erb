@@ -1,0 +1,21 @@
+<h1>All Reservations</h1>
+<table>
+  <thead>
+    <tr>
+      <td>Start Date</td>
+      <td>End Date</td>
+      <td>Total Price</td>
+      <td>Vehicle Category</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.start_date %></td>
+        <td><%= reservation.end_date %></td>
+        <td><%= number_to_currency(reservation.total_price) %></td>
+        <td><%= reservation.category_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

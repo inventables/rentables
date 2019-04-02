@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_164741) do
+ActiveRecord::Schema.define(version: 2019_04_02_202133) do
+
+  create_table "reservations", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.decimal "total_price", precision: 5, scale: 2
+    t.integer "vehicle_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vehicle_category_id"], name: "index_reservations_on_vehicle_category_id"
+  end
 
   create_table "vehicle_categories", force: :cascade do |t|
     t.string "name"
