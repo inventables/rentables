@@ -40,6 +40,12 @@ table {
 }
 
 form {
+  .errors {
+    p {
+      color: darkred;
+    }
+  }
+
   fieldset {
     margin-bottom: 1em;
   }
