@@ -1,0 +1,26 @@
+<%= form_for @reservation do |f| %>
+  <% if @reservation.errors.any? %>
+    <div class="errors">
+      <% @reservation.errors.full_messages.each do |error_message| %>
+        <p><%= error_message.to_s %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= label_tag :start_date %>
+    <%= f.date_field :start_date %>
+  </fieldset>
+
+  <fieldset>
+    <%= label_tag :end_date %>
+    <%= f.date_field :end_date %>
+  </fieldset>
+
+  <fieldset>
+    <%= label_tag :vehicle_category %>
+    <%= f.collection_select :vehicle_category_id, @vehicle_categories, :id, :name, { include_blank: true } %>
+  </fieldset>
+
+  <%= f.submit %>
+<% end %>
