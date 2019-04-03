@@ -12,3 +12,6 @@ Bundler gem, preferred version `2.0.1`
 - Start the server: `rails server`
 
 Navigate to [localhost:3000](http://localhost:3000) to see the app in action.
+
+## Testing
+Run `rake test` in the terminal to run the testing suite.
