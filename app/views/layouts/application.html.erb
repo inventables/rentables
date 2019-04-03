@@ -10,11 +10,14 @@
   </head>
 
   <body>
-    <header>
-      <%= link_to "Vehicles", vehicles_path %>
-      <%= link_to "Reservations", reservations_path %>
-    </header>
-    <br>
-    <%= yield %>
+    <div class="container">
+      <header>
+        <%= link_to "Vehicles", vehicles_path %>
+        <%= link_to "Reservations", reservations_path %>
+      </header>
+      <section>
+        <%= yield %>
+      </section>
+    </div>
   </body>
 </html>
