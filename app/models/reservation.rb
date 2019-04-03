@@ -15,7 +15,7 @@ class Reservation < ApplicationRecord
   end
 
   def end_date_has_to_be_after_start_date
-    if end_date <= start_date
+    if end_date.present? && start_date.present? && end_date <= start_date
       errors.add(:end_date, "can't be before or on start date")
     end
   end
