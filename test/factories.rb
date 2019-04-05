@@ -13,7 +13,7 @@ FactoryBot.define do
   factory :vehicle do
     vehicle_model { VehicleModel.first || FactoryBot.create(:vehicle_model) }
     year { 5.years.ago.strftime("%Y").to_i + [*1..3].shuffle.pop }
-    commissioned_on { year + [*1..3].shuffle.pop }
+    commissioned_on { rand(Date.new(year)..Date.today) }
   end
 
   factory :reservation do

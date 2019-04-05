@@ -1,0 +1,26 @@
+<%= form_for @vehicle do |f| %>
+  <% if @vehicle.errors.any? %>
+    <div class="errors">
+      <% @vehicle.errors.full_messages.each do |error_message| %>
+        <p><%= error_message.to_s %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= label_tag :vehicle_model %>
+    <%= f.collection_select :vehicle_model_id, @vehicle_models, :id, :make_and_name, { include_blank: true } %>
+  </fieldset>
+
+  <fieldset>
+    <%= label_tag :year %>
+    <%= f.select :year, (Date.today.year - 5)..(Date.today.year + 3), selected: Date.today.year %>
+  </fieldset>
+
+  <fieldset>
+    <%= label_tag :commissioned_on %>
+    <%= f.date_field :commissioned_on %>
+  </fieldset>
+
+  <%= f.submit %>
+<% end %>
