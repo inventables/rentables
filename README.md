@@ -1,4 +1,4 @@
-# Inventables Car Rental Coding Challenge
+# Rentables
 
 In the year 20XX, Inventables is expanding, aiming to capture the hot vehicle rental market for vacationing X-Carve owners. We've procured a sizable vehicle fleet and built a website allowing customers to make rental reservations. Initial customer feedback has been mostly positive, except that over the recent Election Day holiday weekend we took more reservations than we had vehicles in our fleet and were unable to fulfill some of the reservations!
 
