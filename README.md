@@ -28,7 +28,13 @@ A specific vehicle from our rental fleet. Each vehicle belongs to a vehicle mode
 
 A customer's vehicle reservation. A reservation belongs to a vehicle category, as mentioned above. A reservation also has a `start_date` and an `end_date`, and a `total_price` in dollars.
 
-## Requirements
+## The challenge
+
+Implement validations in the `Reservation` model or the `ReservationsController` to prevent the Rentables app from creating reservations if its fleet doesn't have enough vehicles in the category to fulfill a reservation for the requested date range.
+
+We've added some tests in **test/integration/reservation_flow_test.rb** covering creating reservations. One of these tests is failing — we need to get it to pass.
+
+## System requirements
 Ruby version `2.5.1`
 Bundler gem, preferred version `2.0.1`
 
