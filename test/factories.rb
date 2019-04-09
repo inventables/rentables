@@ -1,13 +1,19 @@
 FactoryBot.define do
   factory :vehicle_category do
-    name { "Sedan" }
+    sequence :name do |n|
+      "Sedan #{n}"
+    end
     daily_price { 3.20 }
   end
 
   factory :vehicle_model do
     vehicle_category { VehicleCategory.first || FactoryBot.create(:vehicle_category) }
-    make { "Ford" }
-    name { "Fusion" }
+    sequence :make do |n|
+      "Ford #{n}"
+    end
+    sequence :name do |n|
+      "Fusion #{n}"
+    end
   end
 
   factory :vehicle do
