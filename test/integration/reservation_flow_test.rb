@@ -2,8 +2,9 @@ require 'test_helper'
 
 class ReservationFlowTest < ActionDispatch::IntegrationTest
   test "should create a reservation if a car is available to be rented" do
-    FactoryBot.create :vehicle # this also creates the VehicleModel and VehicleCategory
-    vehicle_category = VehicleCategory.first
+    vehicle_category = FactoryBot.create :vehicle_category
+    vehicle_model = FactoryBot.create :vehicle_model, vehicle_category: vehicle_category
+    FactoryBot.create :vehicle, vehicle_model: vehicle_model
 
     # lets create 2 reservations that allow for another reservation in between them
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-01", end_date: "2019-01-10"
@@ -17,8 +18,9 @@ class ReservationFlowTest < ActionDispatch::IntegrationTest
   end
 
   test "cannot create a reservation when no vehicles are available" do
-    FactoryBot.create :vehicle # this also creates the VehicleModel and VehicleCategory
-    vehicle_category = VehicleCategory.first
+    vehicle_category = FactoryBot.create :vehicle_category
+    vehicle_model = FactoryBot.create :vehicle_model, vehicle_category: vehicle_category
+    FactoryBot.create :vehicle, vehicle_model: vehicle_model
 
     # lets create a reservation that lasts the entire month
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-01", end_date: "2019-01-31"
