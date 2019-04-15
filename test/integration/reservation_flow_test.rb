@@ -10,10 +10,10 @@ class ReservationFlowTest < ActionDispatch::IntegrationTest
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-01", end_date: "2019-01-10"
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-21", end_date: "2019-01-30"
 
-    # we should be able to make a reservation in the empty space between existing reservations
+    # try to make a reservation in the empty space between existing reservations
     post reservations_path, params: { reservation: { start_date: "2019-01-11", end_date: "2019-01-20", vehicle_category_id: vehicle_category.id } }
-    follow_redirect!
-    assert_response :success
+
+    # the new reservation should be saved
     assert_equal 3, Reservation.count
   end
 
@@ -25,10 +25,10 @@ class ReservationFlowTest < ActionDispatch::IntegrationTest
     # create a reservation that lasts the entire month
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-01", end_date: "2019-01-31"
 
-    # by having only one car we should not be able to make new reservations
+    # by having only one car we should not be able to make new reservations during that month
     post reservations_path, params: { reservation: { start_date: "2019-01-11", end_date: "2019-01-20", vehicle_category_id: vehicle_category.id } }
-    follow_redirect!
-    assert_response :success
+
+    # the new reservation should not be saved
     assert_equal 1, Reservation.count
   end
 end
