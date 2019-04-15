@@ -6,7 +6,7 @@ class ReservationFlowTest < ActionDispatch::IntegrationTest
     vehicle_model = FactoryBot.create :vehicle_model, vehicle_category: vehicle_category
     FactoryBot.create :vehicle, vehicle_model: vehicle_model
 
-    # lets create 2 reservations that allow for another reservation in between them
+    # create 2 reservations that allow for another reservation in between them
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-01", end_date: "2019-01-10"
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-21", end_date: "2019-01-30"
 
@@ -22,7 +22,7 @@ class ReservationFlowTest < ActionDispatch::IntegrationTest
     vehicle_model = FactoryBot.create :vehicle_model, vehicle_category: vehicle_category
     FactoryBot.create :vehicle, vehicle_model: vehicle_model
 
-    # lets create a reservation that lasts the entire month
+    # create a reservation that lasts the entire month
     FactoryBot.create :reservation, vehicle_category: vehicle_category, start_date: "2019-01-01", end_date: "2019-01-31"
 
     # by having only one car we should not be able to make new reservations
