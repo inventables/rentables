@@ -10,6 +10,20 @@ class Reservation < ApplicationRecord
   validate :end_date_has_to_be_after_start_date
   validate :no_conflicting_reservations
 
+
+  # made this method a public instance
+  # because it could be valuable to pull a list of
+  # conflicting reservations
+  def conflicting_reservations
+    Reservation.where(overlap_case_1).or(
+      Reservation.where(overlap_case_2).or(
+        Reservation.where(overlap_case_3).or(
+          Reservation.where(overlap_case_4)
+        )
+      )
+    )
+  end
+
   private
   def set_total_price
     update_attribute :total_price, vehicle_category.daily_price * (end_date - start_date).to_i
@@ -22,17 +36,7 @@ class Reservation < ApplicationRecord
   end
 
   def no_conflicting_reservations
-    errors.add(:base, "Reservation cannot overlap with an existing reservation") if conflicting_reservations.present?
-  end
-
-  def conflicting_reservations
-    Reservation.where(overlap_case_1).or(
-      Reservation.where(overlap_case_2).or(
-        Reservation.where(overlap_case_3).or(
-          Reservation.where(overlap_case_4)
-        )
-      )
-    )
+    errors.add(:base, "Reservation cannot overlap with existing reservations") if conflicting_reservations.present?
   end
 
   def overlap_case_1
