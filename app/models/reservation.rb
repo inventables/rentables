@@ -26,6 +26,8 @@ class Reservation < ApplicationRecord
   end
 
   def vehicle_available
+    return unless vehicle_category && errors.blank?
+
     errors.add(:base, "#{category_name} not available to reserve #{start_date} to #{end_date}.") if conflicting_reservations.count >= vehicle_category.vehicles.count
   end
 
@@ -38,7 +40,7 @@ class Reservation < ApplicationRecord
           category_reservations.where(conflict_case_4)
         )
       )
-    ).uniq
+    )
   end
 
   def conflict_case_1
@@ -64,8 +66,8 @@ class Reservation < ApplicationRecord
 
   def conflict_case_4
     <<~EOS
-      start_date >= '#{start_date}'
-      AND end_date <= '#{end_date}'
+      start_date > '#{start_date}'
+      AND end_date < '#{end_date}'
     EOS
   end
 end
