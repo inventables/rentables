@@ -43,6 +43,13 @@ class ReservationFlowTest < ActionDispatch::IntegrationTest
     # by having only one car we should not be able to make new reservations including those days
     post reservations_path, params: { reservation: { start_date: "2019-01-11", end_date: "2019-01-20", vehicle_category_id: vehicle_category.id } }
 
+    post reservations_path, params: { reservation: { start_date: "2019-01-01", end_date: "2019-01-17", vehicle_category_id: vehicle_category.id } }
+
+    post reservations_path, params: { reservation: { start_date: "2019-01-15", end_date: "2019-01-31", vehicle_category_id: vehicle_category.id } }
+
+    post reservations_path, params: { reservation: { start_date: "2019-01-15", end_date: "2019-01-16", vehicle_category_id: vehicle_category.id } }
+
+
     # the new reservation should not be saved
     assert_equal 1, Reservation.count
   end
