@@ -15,10 +15,10 @@ class Reservation < ApplicationRecord
   # because it could be valuable to pull a list of
   # conflicting reservations
   def conflicting_reservations
-    Reservation.where(overlap_case_1).or(
-      Reservation.where(overlap_case_2).or(
-        Reservation.where(overlap_case_3).or(
-          Reservation.where(overlap_case_4)
+    vehicle_category_reservations.where(overlap_case_1).or(
+      vehicle_category_reservations.where(overlap_case_2).or(
+        vehicle_category_reservations.where(overlap_case_3).or(
+          vehicle_category_reservations.where(overlap_case_4)
         )
       )
     )
@@ -37,6 +37,10 @@ class Reservation < ApplicationRecord
 
   def no_conflicting_reservations
     errors.add(:base, "Reservation cannot overlap with existing reservations") if conflicting_reservations.present?
+  end
+
+  def vehicle_category_reservations
+    Reservation.where(vehicle_category: vehicle_category)
   end
 
   def overlap_case_1
